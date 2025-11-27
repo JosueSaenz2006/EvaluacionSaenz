@@ -1,0 +1,125 @@
+
+.grilla-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/*El diseño de las targetas saque de aqui: https://codigofuente.io/diseno-de-tarjeta-de-estilo-rpg-con-html-css/*/
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card-top {
+  border: 3px solid #FFD700;
+  background: linear-gradient(to bottom, #FFF9E6 0%, white 100%);
+}
+
+.card-normal {
+  border: 1px solid #e0e0e0;
+}
+
+.card-image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-contenido {
+  padding: 15px;
+  flex: 1;
+}
+
+.card-titulo {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  color: #333;
+  font-weight: bold;
+  min-height: 45px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating {
+  font-size: 14px;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.year {
+  font-size: 14px;
+  color: #666;
+}
+
+.card-generos {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.genero 
+{
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.card-footer 
+{
+  padding: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.btn-watchlist 
+{
+  width: 100%;
+  padding: 10px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-watchlist:hover 
+{
+  background-color: #1976d2;
+}
+
+.btn-watchlist.en-lista 
+{
+  background-color: #f44336;
+}
+
+.btn-watchlist.en-lista:hover 
+{
+  background-color: #d32f2f;
+}

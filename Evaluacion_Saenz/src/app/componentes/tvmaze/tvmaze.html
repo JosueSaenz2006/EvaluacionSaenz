@@ -1,0 +1,69 @@
+<div class="contenedor">
+    <div class="buscador">
+        <h1>Guía de Televisión</h1>
+        <div class="input-grupo">
+            <input 
+                type="text" 
+                [(ngModel)]="letraBusqueda" 
+                placeholder="Ingresa una letra para buscar programas..."
+                (keyup.enter)="buscarProgramas()"
+            />
+            <button (click)="buscarProgramas()" [disabled]="cargando">
+                {{ cargando ? 'Buscando...' : 'Buscar' }}
+            </button>
+        </div>
+    </div>
+
+    <div class="mensaje" *ngIf="!cargando && shows.length === 0 && letraBusqueda === ''">
+        Ingresa una letra en el buscador para comenzar
+    </div>
+
+    <div class="mensaje" *ngIf="cargando">
+        Cargando programas...
+    </div>
+
+    <div class="grilla-cards" *ngIf="!cargando && shows.length > 0">
+        <div 
+            *ngFor="let show of shows" 
+            class="card"
+            [ngClass]="obtenerClaseCard(show.rating.average)"
+        >
+            <div class="card-image" 
+                 [style.background-image]="show.image ? 'url(' + show.image.medium + ')' : 'url(https://via.placeholder.com/210x295/cccccc/666666?text=Sin+Imagen)'">
+            </div>
+            
+            <div class="card-contenido">
+                <h3 class="card-titulo">{{ show.name }}</h3>
+                
+                <div class="card-info">
+                    <span class="rating">
+                        {{ obtenerRatingTexto(show.rating.average) }}
+                    </span>
+                    <span class="year" *ngIf="show.premiered">
+                        {{ show.premiered.substring(0, 4) }}
+                    </span>
+                </div>
+
+                <div class="card-generos" *ngIf="show.genres && show.genres.length > 0">
+                    <span class="genero" *ngFor="let genero of show.genres.slice(0, 2)">
+                        {{ genero }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button 
+                    class="btn-watchlist"
+                    [ngClass]="{'en-lista': estaEnWatchlist(show.id)}"
+                    (click)="toggleWatchlist(show)"
+                >
+                    {{ obtenerTextoBoton(show.id) }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mensaje" *ngIf="!cargando && shows.length === 0 && letraBusqueda !== ''">
+        No se encontraron programas con esa búsqueda
+    </div>
+</div>
